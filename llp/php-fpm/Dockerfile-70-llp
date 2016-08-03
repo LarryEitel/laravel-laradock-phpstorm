@@ -1,4 +1,4 @@
-FROM larryeitel/llp-php-fpm-70-ssh-supervisor:latest
+FROM larryeitel/llp-php-fpm-70-ssh-supervisor:v4.0.3
 
 MAINTAINER Larry Eitel <larry@eitel.com>
 

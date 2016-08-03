@@ -47,7 +47,7 @@ services:
 
         # PHPStorm needs this
         environment:
-            - PHP_IDE_CONFIG="serverName=docker"
+            - PHP_IDE_CONFIG="serverName=llpLaravel"
 
 ### Nginx Server Container ##################################
 

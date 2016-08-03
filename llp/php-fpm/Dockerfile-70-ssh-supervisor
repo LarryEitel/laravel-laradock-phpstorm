@@ -1,4 +1,4 @@
-FROM larryeitel/laradock-php-fpm-70:latest
+FROM larryeitel/laradock-php-fpm-70:v4.0.3
 
 MAINTAINER Larry Eitel <larry@eitel.com>
 
@@ -31,6 +31,7 @@ RUN cp -f /root/.ssh/id_rsa_vm.pub /root/.ssh/authorized_keys
 
 RUN apt-get update \
     && apt-get install -y \
+        telnet \
         php-pear \
         git wget supervisor openssh-server \
         vim \
