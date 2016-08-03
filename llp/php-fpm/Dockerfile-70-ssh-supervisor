@@ -1,0 +1,45 @@
+FROM larryeitel/laradock-php-fpm-70:latest
+
+MAINTAINER Larry Eitel <larry@eitel.com>
+
+RUN mkdir -p /var/log/supervisor \
+    && mkdir -p /var/run/sshd \
+    && mkdir -p /root/.ssh \
+    && mkdir -p /var/log/supervisor
+
+# chokes if these are not provided
+ARG INSTALL_MONGO=false
+ENV INSTALL_MONGO ${INSTALL_MONGO}
+ARG INSTALL_XDEBUG=true
+ENV INSTALL_XDEBUG ${INSTALL_XDEBUG}
+
+
+ADD supervisord.conf /etc/supervisor/conf.d/
+
+RUN mkdir -p /var/log/supervisor \
+    && mkdir -p /var/run/sshd \
+    && mkdir -p /root/.ssh \
+    && mkdir -p /var/log/supervisor 
+
+# These are excluded in .gitignore
+# Running docker on Windows Pro host
+# Found no way to directly access these files directly :(
+ADD id_rsa_vm /root/.ssh
+ADD id_rsa_vm.pub /root/.ssh
+
+RUN cp -f /root/.ssh/id_rsa_vm.pub /root/.ssh/authorized_keys
+
+RUN apt-get update \
+    && apt-get install -y \
+        php-pear \
+        git wget supervisor openssh-server \
+        vim \
+        --no-install-recommends \
+    && git clone https://github.com/pear/pear-core.git /usr/share/pear; exit 0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+VOLUME /var/log
+
+RUN usermod -u 1000 www-data

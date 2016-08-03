@@ -1,0 +1,19 @@
+FROM larryeitel/llp-php-fpm-70-ssh-supervisor:latest
+
+MAINTAINER Larry Eitel <larry@eitel.com>
+
+ARG INSTALL_MONGO=false
+ENV INSTALL_MONGO ${INSTALL_MONGO}
+ARG INSTALL_XDEBUG=true
+ENV INSTALL_XDEBUG ${INSTALL_XDEBUG}
+
+WORKDIR /var/www/laravel
+
+RUN cp /usr/src/php/php.ini-development /usr/local/etc/php/php.ini \
+    && cp /usr/src/php/php.ini-development /usr/src/php/php.ini
+
+COPY xdebug.ini /usr/local/etc/php/conf.d
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+
+EXPOSE 22 9000
