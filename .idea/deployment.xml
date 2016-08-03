@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" serverName="llp-laravel">
     <serverData>
       <paths name="ads.orgtec">
         <serverdata>
@@ -104,6 +104,14 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="llp-laravel">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/public" local="$PROJECT_DIR$/public" web="/" />
           </mappings>
         </serverdata>
       </paths>
