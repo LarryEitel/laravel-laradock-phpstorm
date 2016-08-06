@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e531aa15-6f7f-454d-876c-0774c5eba006" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/Connection.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/ConnectionData.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/ConnectionSSH.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/ConnectionSSHAuth.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/Session.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/Terminal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/TerminalKeyboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/Window.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/KiTTY/WindowAppearance.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/PHPStorm/DebugRemoteOn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/EditRunConfigurations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/BuildDeploymentConnectionMappings.png" afterPath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/BuildDeploymentConnectionMappings.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/DeploymentConnection.png" afterPath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/DeploymentConnection.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPInterpreters.png" afterPath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPInterpreters.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPPHPUnit.png" afterPath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPPHPUnit.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPServers.png" afterPath="$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPServers.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/.gitignore" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llp/.gitignore" afterPath="$PROJECT_DIR$/llp/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llp/docker-compose.yml" afterPath="$PROJECT_DIR$/llp/docker-compose.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llp/logs/nginx/access.log" afterPath="$PROJECT_DIR$/llp/logs/nginx/access.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-56" afterPath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-56" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70" afterPath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-llp" afterPath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-llp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-ssh-supervisor" afterPath="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-ssh-supervisor" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <ignored path="laravel-laradock-phpstorm.iws" />
@@ -51,8 +29,8 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="335">
-                <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+              <first_editor relative-caret-position="148">
+                <caret line="226" column="100" selection-start-line="226" selection-start-column="100" selection-end-line="226" selection-end-column="100" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -63,9 +41,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DebugRemoteOn.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/DebugRemoteOn.png">
-          <provider selected="true" editor-type-id="images">
+      <file leaf-file-name="ExampleTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/ExampleTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/llp/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding>
+                  <marker date="1470244382513" expanded="true" signature="13166:13271" ph="applicatio...: &lt;2 keys&gt;" />
+                  <marker date="1470244382513" expanded="true" signature="13194:13207" ph="./applicat..." />
+                  <marker date="1470244382513" expanded="true" signature="13216:13271" ph="volumes: &lt;1 item&gt;" />
+                  <marker date="1470244382513" expanded="true" signature="13239:13271" ph="../my-cool..." />
+                  <marker date="1470244382513" expanded="true" signature="14612:14747" ph="..." />
+                  <marker date="1470244382513" expanded="true" signature="14655:14744" ph="..." />
+                  <marker date="1470244382513" expanded="true" signature="16193:16530" ph="..." />
+                  <marker date="1470244382513" expanded="true" signature="16213:16517" ph="..." />
+                  <marker date="1470244382513" expanded="true" signature="16472:16511" ph="..." />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+          <provider editor-type-id="Gfm">
             <state />
           </provider>
         </entry>
@@ -74,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="45" />
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,24 +140,10 @@
       <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/llp/docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="374">
               <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LangsPHPPHPUnit.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPPHPUnit.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LangsPHPServers.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPServers.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -148,6 +151,16 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="LarryEitel" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="laravel-laradock-phpstorm" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -155,13 +168,13 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_4.sh" />
         <option value="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-add-ssh-supervisor" />
         <option value="$PROJECT_DIR$/llp/.gitignore" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/laradock/php-fpm/Dockerfile-70" />
         <option value="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70" />
         <option value="$PROJECT_DIR$/llp/docker-compose.yml" />
         <option value="$PROJECT_DIR$/llp/php-fpm/laravel.ini" />
         <option value="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-ssh-supervisor" />
         <option value="$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-llp" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
@@ -190,10 +203,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="llpLaravel" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="14" />
-    <option name="y" value="31" />
+    <option name="x" value="35" />
+    <option name="y" value="45" />
     <option name="width" value="1814" />
-    <option name="height" value="1028" />
+    <option name="height" value="982" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -220,8 +233,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -264,25 +275,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="screenshots" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHPStorm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-laradock-phpstorm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-laradock-phpstorm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="screenshots" />
+              <option name="myItemId" value="storage" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -297,43 +290,13 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="llp" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-laradock-phpstorm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-laradock-phpstorm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="llp" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php-fpm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-laradock-phpstorm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-laradock-phpstorm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,7 +321,7 @@
       <recent name="C:\_dk\laravel-laradock-phpstorm\llp" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Remote Debug.llpLaravel">
+  <component name="RunManager" selected="PHPUnit.ExampleTest">
     <configuration default="false" name="ExampleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="ExampleTest" file="$PROJECT_DIR$/tests/ExampleTest.php" scope="Class" />
       <method />
@@ -427,7 +390,10 @@
       <option name="presentableId" value="Default" />
       <updated>1470237426557</updated>
       <workItem from="1470237428177" duration="23392000" />
-      <workItem from="1470264507660" duration="2897000" />
+      <workItem from="1470264507660" duration="3528000" />
+      <workItem from="1470341728367" duration="16000" />
+      <workItem from="1470366475275" duration="660000" />
+      <workItem from="1470440272547" duration="2065000" />
     </task>
     <task id="LOCAL-00001" summary="README.md - Init draft of docs for installations.">
       <created>1470249809297</created>
@@ -443,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470252714589</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Everything appears to work with complete docs.">
+      <created>1470267430595</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1470267430595</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -468,35 +441,38 @@
     <history-entry file="ExampleTest - 2016.08.03 at 16h 45m 18s.xml">
       <configuration name="ExampleTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="ExampleTest - 2016.08.05 at 09h 27m 22s.xml">
+      <configuration name="ExampleTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26289000" />
+    <option name="totallyTimeSpent" value="29661000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="14" y="31" width="1814" height="1028" extended-state="0" />
+    <frame x="35" y="45" width="1814" height="982" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="GfmBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10376283" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21322691" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.5022805" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.4977195" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.4977195" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10376283" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2063854" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286052" sideWeight="0.4977195" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910313" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.4977195" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910313" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -514,22 +490,100 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="README.md - Init draft of docs for installations." />
     <MESSAGE value="PHPStorm screenshots of settings. Remote Debugging works!" />
-    <option name="LAST_COMMIT_MESSAGE" value="PHPStorm screenshots of settings. Remote Debugging works!" />
+    <MESSAGE value="Everything appears to work with complete docs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Everything appears to work with complete docs." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/bootstrap/app.php</url>
-          <line>13</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPPHPUnit.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPServers.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/DebugRemoteOn.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-llp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/llp/php-fpm/set_dockerhost_ip.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/llp/php-fpm/Dockerfile-70-ssh-supervisor">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/llp/php-fpm/xdebug.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/llp/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPPHPUnit.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/Settings/LangsPHPServers.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
@@ -585,7 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -593,7 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="55" column="18" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -650,19 +701,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laradock/php-fpm/Dockerfile-70">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -678,27 +720,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/ExampleTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/llp/php-fpm/laravelWithNoMongo.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/llp/php-fpm/laravelWithNoMongo.ini" />
     <entry file="file://$PROJECT_DIR$/llp/php-fpm/laravel.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -706,7 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -714,7 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,14 +770,6 @@
     <entry file="file://$PROJECT_DIR$/screenshots/PHPStorm/DebugRemoteOn.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="45" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/llp/php-fpm/set_dockerhost_ip.sh">
@@ -790,17 +806,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/llp/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="374">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/ExampleTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/llp/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1470244382513" expanded="true" signature="13166:13271" ph="applicatio...: &lt;2 keys&gt;" />
+              <marker date="1470244382513" expanded="true" signature="13194:13207" ph="./applicat..." />
+              <marker date="1470244382513" expanded="true" signature="13216:13271" ph="volumes: &lt;1 item&gt;" />
+              <marker date="1470244382513" expanded="true" signature="13239:13271" ph="../my-cool..." />
+              <marker date="1470244382513" expanded="true" signature="14612:14747" ph="..." />
+              <marker date="1470244382513" expanded="true" signature="14655:14744" ph="..." />
+              <marker date="1470244382513" expanded="true" signature="16193:16530" ph="..." />
+              <marker date="1470244382513" expanded="true" signature="16213:16517" ph="..." />
+              <marker date="1470244382513" expanded="true" signature="16472:16511" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="Gfm">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="335">
-            <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+          <first_editor relative-caret-position="148">
+            <caret line="226" column="100" selection-start-line="226" selection-start-column="100" selection-end-line="226" selection-end-column="100" />
             <folding />
           </first_editor>
           <second_editor />

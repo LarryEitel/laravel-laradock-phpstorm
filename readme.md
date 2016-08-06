@@ -121,7 +121,12 @@ docker build --no-cache \
     -t larryeitel/laradock-php-fpm-70:$LARADOCK_VERSION \
     -f Dockerfile-70 .
 
-# Run:
+# I used this to push these images to my Docker Hub
+docker login -u larryeitel -p
+docker push larryeitel/laradock-php-fpm-70:latest
+docker push larryeitel/laradock-php-fpm-70:$LARADOCK_VERSION
+
+
 docker images | awk '{print $1,$2,$3}' | grep laradock-php-fpm-70
 
 # you should see:
@@ -150,6 +155,12 @@ docker build --no-cache \
     -t larryeitel/llp-php-fpm-70-ssh-supervisor:latest \
     -t larryeitel/llp-php-fpm-70-ssh-supervisor:$LARADOCK_VERSION \
     -f Dockerfile-70-ssh-supervisor .
+
+# I used this to push these images to my Docker Hub
+docker login -u larryeitel -p
+docker push larryeitel/llp-php-fpm-70-ssh-supervisor:latest
+docker push larryeitel/llp-php-fpm-70-ssh-supervisor:$LARADOCK_VERSION
+
 
 # Run:
 docker images | awk '{print $1,$2,$3}' | grep llp-php-fpm-70-ssh-supervisor
