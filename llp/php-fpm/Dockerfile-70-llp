@@ -1,4 +1,4 @@
-FROM larryeitel/llp-php-fpm-70-ssh-supervisor:v4.0.3
+FROM larryeitel/llp-php-fpm-70-ssh-supervisor:v4.0.4
 
 MAINTAINER Larry Eitel <larry@eitel.com>
 
@@ -9,9 +9,10 @@ ENV INSTALL_XDEBUG ${INSTALL_XDEBUG}
 
 WORKDIR /var/www/laravel
 
-RUN cp /usr/src/php/php.ini-development /usr/local/etc/php/php.ini \
-    && cp /usr/src/php/php.ini-development /usr/src/php/php.ini
+# PHPStorm needs to see a php.ini
+RUN touch /usr/local/etc/php/php.ini
 
+ADD .dotfiles/.bashrc /root
 COPY xdebug.ini /usr/local/etc/php/conf.d
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

@@ -9,6 +9,7 @@ Wiring up [Laravel](https://laravel.com/), [LaraDock](https://github.com/LaraDoc
     - [LaraDock](#InstallLaraDock) 
         - [Custom php-fpm](#InstallPHP-FPM) 
         - [Docker Images](#InstallDockerImages) 
+            - [Push Images to Docker Hub](#InstallDockerImagesToTheHub) 
         - [Clean House](#InstallCleanHouse) 
         - [LaraDock Dial Tone](#InstallLaraDockDialTone) 
         - [SSH into php-fpm](#InstallLaraDockSSH) 
@@ -83,6 +84,8 @@ cd llp
 ### php-fpm
 Here's a catalog of files in `laravel-laradock-phpstorm/llp/php-fpm`:
 ```
+.dotfiles
+    .bashrc # set a couple variables for git-town
 .gitignore
 Dockerfile-56
 Dockerfile-70
@@ -113,7 +116,7 @@ cd laravel-laradock-phpstorm/llp/php-fpm
 ```
 
 Let's set a variable to reflect current `LaraDock` version:
-`LARADOCK_VERSION=v4.0.3`
+`LARADOCK_VERSION=v4.0.4`
 
 ```
 docker build --no-cache \
@@ -136,12 +139,13 @@ larryeitel/laradock-php-fpm-70      <LARADOCK_VERSION>  <hash>        14 seconds
 Please review [Dockerfile-70-ssh-supervisor](./llp/php-fpm/Dockerfile-70-ssh-supervisor) to see what is being added to this container.
     - For example, I am adding: 
         ```
+        man \
         telnet \
         php-pear \
         git wget supervisor openssh-server \
         vim 
         ```
-        Feel free to remove `telnet`, `php-pear` and `vim`.
+        Feel free to remove `man`, `telnet`, `php-pear` and `vim`.
     
 ```
 cd laravel-laradock-phpstorm/llp/php-fpm
@@ -158,6 +162,8 @@ docker images | awk '{print $1,$2,$3}' | grep llp-php-fpm-70-ssh-supervisor
 larryeitel/llp-php-fpm-70-ssh-supervisor latest             <hash>
 larryeitel/llp-php-fpm-70-ssh-supervisor <LARADOCK_VERSION> <hash>
 ```
+
+
 
 ##### php-fpm/Dockerfile-70-llp
 This is where important configurations are made to accommodate PHPStorm. 
@@ -205,6 +211,15 @@ php-fpm:
     environment:
         - PHP_IDE_CONFIG="serverName=llpLaravel"
 ```
+
+<a name="InstallDockerImagesToTheHub"></a>
+#### Push Images to Docker Hub
+Steps I take to push these images to the hub:
+- docker login -u larryeitel -p
+- docker push larryeitel/laradock-php-fpm-70:$LARADOCK_VERSION
+- docker push larryeitel/laradock-php-fpm-70:latest
+- docker push larryeitel/llp-php-fpm-70-ssh-supervisor:$LARADOCK_VERSION
+- docker push larryeitel/llp-php-fpm-70-ssh-supervisor:latest
 
 
 <a name="InstallCleanHouse"></a>

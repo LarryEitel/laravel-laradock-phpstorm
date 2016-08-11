@@ -1,4 +1,4 @@
-FROM larryeitel/laradock-php-fpm-70:v4.0.3
+FROM larryeitel/laradock-php-fpm-70:v4.0.4
 
 MAINTAINER Larry Eitel <larry@eitel.com>
 
@@ -12,7 +12,6 @@ ARG INSTALL_MONGO=false
 ENV INSTALL_MONGO ${INSTALL_MONGO}
 ARG INSTALL_XDEBUG=true
 ENV INSTALL_XDEBUG ${INSTALL_XDEBUG}
-
 
 ADD supervisord.conf /etc/supervisor/conf.d/
 
@@ -31,15 +30,17 @@ RUN cp -f /root/.ssh/id_rsa_vm.pub /root/.ssh/authorized_keys
 
 RUN apt-get update \
     && apt-get install -y \
+        man \
         telnet \
         php-pear \
         git wget supervisor openssh-server \
         vim \
         --no-install-recommends \
-    && git clone https://github.com/pear/pear-core.git /usr/share/pear; exit 0 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN git clone https://github.com/pear/pear-core.git /usr/share/pear; exit 0
+RUN git clone https://github.com/Originate/git-town.git /usr/share/git-town; exit 0
 
 VOLUME /var/log
 
