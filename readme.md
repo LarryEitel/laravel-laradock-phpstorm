@@ -292,6 +292,7 @@ Yes
         - ![Settings/LangsPHPServers](screenshots/PHPStorm/Settings/LangsPHPServers.png)
     
     - `RemoteHost`
+        To switch on this view, go to: `Menu/Tools/Deployment/Browse Remote Host`.
         - ![RemoteHost](screenshots/PHPStorm/RemoteHost.png)
 
 
