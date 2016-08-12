@@ -8,9 +8,9 @@ Wiring up [Laravel](https://laravel.com/), [LaraDock](https://github.com/LaraDoc
     - [Docker](#InstallDocker) 
     - [Laravel](#InstallLaravel) 
     - [LaraDock](#InstallLaraDock) 
-        - [Custom php-fpm](#InstallPHP-FPM) 
-        - [Docker Images](#InstallDockerImages) 
-            - [Push Images to Docker Hub](#InstallDockerImagesToTheHub) 
+        - [Customized php-fpm](#CustomizePHP-FPM) 
+        - [Customized workspace](#CustomizeWorkspace) 
+        - [Customized laradock/docker-compose.yml](#CustomizeDockerCompose) 
         - [Clean House](#InstallCleanHouse) 
         - [LaraDock Dial Tone](#InstallLaraDockDialTone) 
         - [SSH into php-fpm](#InstallLaraDockSSH) 
@@ -78,8 +78,8 @@ rm -rf .git*
 ```
 
 
-<a name="InstallPHP-FPM"></a>
-### php-fpm
+<a name="CustomizePHP-FPM"></a>
+#### Customize php-fpm
 - Create new file
     ```
     php-fpm/xdebug.ini
@@ -102,7 +102,8 @@ rm -rf .git*
     COPY ../xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     ```
 
-### workspace
+<a name="CustomizeWorkspace"></a>
+#### Customize workspace
 The LaraDock workspace container is based on [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker).
 This image provides support out of the box for `SSH` although it is not enabled by default. Be sure to read their docs on this at: 
 [Login to the container, or running a command inside it, via SSH](https://github.com/phusion/baseimage-docker#login_ssh).
@@ -151,6 +152,8 @@ RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys \
 
 ### Edited laradock/docker-compose.yml
 
+<a name="CustomizeDockerCompose"></a>
+#### Customize laradock/docker-compose.yml
 **TODO**: Need to set your docker host IP for php-fpm container.
 
 #### Workspace Utilities Container
