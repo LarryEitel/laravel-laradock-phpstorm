@@ -314,6 +314,7 @@ Yes
 - right-click on `tests/ExampleTest.php`
     - Select: `Debug 'ExampleTest.php'`.
     - Should have stopped at the BreakPoint!! You are now debugging locally against a remote Laravel project via SSH!
+    - ![Remote Test Debugging Success](screenshots/PHPStorm/RemoteTestDebuggingSuccess.png)
 
 
 <a name="UsagePHPStormDebugSite"></a>
@@ -324,3 +325,4 @@ Yes
 - Add a BreakPoint on line 14: `$app = new Illuminate\Foundation\Application(`
 - Reload [Laravel Site](http://llplaravel/)
     - Should have stopped at the BreakPoint!! You are now debugging locally against a remote Laravel project via SSH!
+    - ![Remote Debugging Success](screenshots/PHPStorm/RemoteDebuggingSuccess.png)
