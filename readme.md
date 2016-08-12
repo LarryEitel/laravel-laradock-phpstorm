@@ -99,7 +99,7 @@ rm -rf .git*
 - Edited Dockerfile-56 and Dockerfile-70
     Added:
     ```
-    COPY ../xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     ```
 
 <a name="CustomizeWorkspace"></a>
@@ -124,7 +124,7 @@ Added the following:
 # ADDED for PHPStorm debugging
 # NOTE: The following assumes PHP 7.0, change as needed for 5.6
 #--------------------------------------------------------------------------
-COPY ../xdebug.ini /etc/php/7.0/cli/conf.d/docker-xdebug.ini
+COPY xdebug.ini /etc/php/7.0/cli/conf.d/docker-xdebug.ini
 
 
 #--------------------------------------------------------------------------
