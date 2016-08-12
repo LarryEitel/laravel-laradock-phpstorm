@@ -75,7 +75,7 @@ ARG PUID=1000
 ARG PGID=1000
 RUN groupadd -g $PGID laradock && \
     useradd -u $PUID -g laradock -m laradock
-    
+
 #####################################
 # Composer:
 #####################################
@@ -102,17 +102,11 @@ RUN if [ ${COMPOSER_GLOBAL_INSTALL} = true ]; then \
 # Check if NVM needs to be installed
 ARG INSTALL_NODE=true
 ENV INSTALL_NODE ${INSTALL_NODE}
+ENV NVM_DIR /home/laradock/.nvm
 RUN if [ ${INSTALL_NODE} = true ]; then \
     # Install nvm (A Node Version Manager)
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.3/install.sh | bash \
-;fi
-# Again check if NVM needs to be installed
-# I had to split this condition link this because when I get it inside the above if statement is refuses to work!
-ENV if [ ${INSTALL_NODE} = true ]; then \
-    # Set the ENV
-    NVM_DIR=/home/laradock/.nvm \
-    # Install NodeJS with NVM
-    RUN . ~/.nvm/nvm.sh && \
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.3/install.sh | bash && \
+        . ~/.nvm/nvm.sh && \
         nvm install stable && \
         nvm use stable && \
         nvm alias stable && \
@@ -137,6 +131,19 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
 USER root
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+COPY xdebug.ini /etc/php/7.0/cli/conf.d/docker-xdebug.ini
+
+RUN rm -f /etc/service/sshd/down
+
+
+ADD id_rsa_vm /tmp/id_rsa
+ADD id_rsa_vm.pub /tmp/id_rsa.pub
+RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys \
+    && cat /tmp/id_rsa.pub >> /root/.ssh/id_rsa.pub \
+    && cat /tmp/id_rsa >> /root/.ssh/id_rsa \
+    && rm -f /tmp/id_rsa*
 
 # Set default work directory
 WORKDIR /var/www/laravel

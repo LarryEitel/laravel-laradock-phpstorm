@@ -73,6 +73,8 @@ RUN rm -r /var/lib/apt/lists/*
 
 RUN usermod -u 1000 www-data
 
+COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 WORKDIR /var/www/laravel
 
 CMD ["php-fpm"]

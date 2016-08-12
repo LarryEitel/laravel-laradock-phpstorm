@@ -1,7 +1,8 @@
 **/.idea*
 **/vendor
-/node_modules
-/public/storage
+**/node_modules
+**/public/storage
+**/data
 **/.env
 **/logs
 **/id_rsa*

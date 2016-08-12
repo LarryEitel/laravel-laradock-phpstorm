@@ -951,7 +951,7 @@ sudo chmod -R 777 storage bootstrap/cache
 
 #### I see "Welcome to nginx" instead of the Laravel App!
 
-Use `http://127.0.0.1` (or [your Docker IP](#Find-Docker-IP-Address)) instead of `http://localhost` in your browser.
+Use `http://127.0.0.1` instead of `http://localhost` in your browser.
 
 #### I see an error message containing `address already in use`
 
@@ -1006,6 +1006,9 @@ For special help with Docker and/or Laravel, you can schedule a live call with t
 
 **Main Contributors:**
 
+- [Suteepat (tianissimo)](https://github.com/tianissimo)
+- [David (davidavz)](https://github.com/davidavz)
+- [Lialosiu](https://github.com/lialosiu)
 - [Eric Pfeiffer (computerfr33k)](https://github.com/computerfr33k)
 - [Orette](https://github.com/orette)
 - [Jack Fletcher (Kauhat)](https://github.com/Kauhat)
