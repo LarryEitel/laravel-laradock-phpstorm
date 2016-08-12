@@ -19,6 +19,7 @@ services:
         extra_hosts:
             # insert your docker host IP
             # this will be appended to php-fpm container /etc/hosts
+            # TODO: Replace with your Docker Host IP
             - "dockerhost:10.0.75.1"
         ports:
            - "22:22"
@@ -37,13 +38,15 @@ services:
             - volumes_source
         expose:
             - "9000"
+        links:
+            - workspace
         extra_hosts:
             # insert your docker host IP
             # this will be appended to php-fpm container /etc/hosts
+            # TODO: Replace with your Docker Host IP
             - "dockerhost:10.0.75.1"
-        links:
-            - workspace
         environment:
+            # IMPORTANT: You must have a Remote Interpreter entry matching this name
             - PHP_IDE_CONFIG="serverName=llpLaravel"
 
 ### Nginx Server Container ##################################

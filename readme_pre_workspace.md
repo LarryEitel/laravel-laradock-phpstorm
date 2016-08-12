@@ -29,6 +29,8 @@ Goal is to put together a sample Laravel project running on very slightly extend
 
 I am running with Docker Native Windows.
 
+
+
 <a name="Installation"></a>
 ## Installation
 This project assumes experience and familiarity with Laravel, Laradock and PHPStorm before proceeding. 
@@ -70,119 +72,155 @@ Since we will using LaraDock as a submodule,
 ```
 # /c/_dk/laravel-laradock-phpstorm
 git submodule add https://github.com/LaraDock/laradock.git
-cd laradock
 
-Since we will be hacking a bit on this, need to preserve refactoring with parent repo. So I will remote .git.
-rm -rf .git*
-
+# We will retain laradock submodule to pull updates to compare/revise our 
+# refactored version.
+mkdir llp # short for laravel-laradock-phpstorm
+cp -R laradock/* llp
+cd llp
 ```
 
 
 <a name="InstallPHP-FPM"></a>
 ### php-fpm
-- Create new file
-    ```
-    php-fpm/xdebug.ini
-    ```
-    Insert:
-    ```
-    zend_extension=xdebug.so
-    xdebug.remote_autostart=1
-    xdebug.remote_enable=1
-    xdebug.remote_handler=dbgp
-    xdebug.remote_mode=req
-    xdebug.remote_port=9000
-    xdebug.remote_host=dockerhost // will be set in docker-compose
-    xdebug.idekey=PHPSTORM
-    ```
-    
-- Edited Dockerfile-56 and Dockerfile-70
-    Added:
-    ```
-    COPY ../xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-    ```
+Here's a catalog of files in `laravel-laradock-phpstorm/llp/php-fpm`:
+```
+.dotfiles
+    .bashrc # set a couple variables for git-town
+.gitignore
+Dockerfile-56
+Dockerfile-70
+Dockerfile-add-ssh-supervisor
+Dockerfile-lwe
+id_rsa_vm
+id_rsa_vm.pub
+laravel.ini
+laravel.pool.conf
+set_dockerhost_ip.sh*
+supervisord.conf
+xdebug.ini
+```
 
-### workspace
-The LaraDock workspace container is based on [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker).
-This image provides support out of the box for `SSH` although it is not enabled by default. Be sure to read their docs on this at: 
-[Login to the container, or running a command inside it, via SSH](https://github.com/phusion/baseimage-docker#login_ssh).
-
-I have created 'vm' keys for this purpose. These are `.gitignore`'d with `**/id_rsa*`
-
-- If you are following along with my approach, create these keys copy them into the `workspace` directory. Note the `_vm` in their name. 
+- Create keys for use with Docker/vm and copy them into this directory. Note the `_vm` in their name. These will be .gitignore'd. At the moment, I found no way to copy them to the container by direct reference on a Windows Host. 
     - `id_rsa_vm`
     - `id_rsa_vm.pub`
+
+
+<a name="InstallDockerImages"></a>
+#### Custom Docker Images
+Why create custom images? Speed! Convenient tweek'age of final image which can be conveniently rebuilt without having to rebuild entire image every time.
+
+##### laradock-php-fpm-70
+- snapshot of stock `laradock-php-fpm-70` and tag it
+```
+cd laravel-laradock-phpstorm/llp/php-fpm
+```
+
+Let's set a variable to reflect current `LaraDock` version:
+`LARADOCK_VERSION=v4.0.4`
+
+```
+docker build --no-cache \
+    -t larryeitel/laradock-php-fpm-70:latest \
+    -t larryeitel/laradock-php-fpm-70:$LARADOCK_VERSION \
+    -f Dockerfile-70 .
+
+# Run:
+docker images | awk '{print $1,$2,$3}' | grep laradock-php-fpm-70
+
+# you should see:
+larryeitel/laradock-php-fpm-70      latest              <hash>        14 seconds ago      522.3 MB
+larryeitel/laradock-php-fpm-70      <LARADOCK_VERSION>  <hash>        14 seconds ago      522.3 MB
+
+
+```
+
+##### php-fpm/Dockerfile-70-ssh-supervisor
+- Let's build an image that extends from `larryeitel/laradock-php-fpm-70` that will contain `ssh` and `supervisor`.
+Please review [Dockerfile-70-ssh-supervisor](./llp/php-fpm/Dockerfile-70-ssh-supervisor) to see what is being added to this container.
+    - For example, I am adding: 
+        ```
+        man \
+        telnet \
+        php-pear \
+        git wget supervisor openssh-server \
+        vim 
+        ```
+        Feel free to remove `man`, `telnet`, `php-pear` and `vim`.
     
-    - Note that if you use a putty client to shell into your `workspace` container, you will have to use puttygen to convert `id_rsa_vm` `id_rsa_vm.ppk`.
-
-
-- Edited Dockerfile
-Added the following:
 ```
-#--------------------------------------------------------------------------
-# ADDED for PHPStorm debugging
-# NOTE: The following assumes PHP 7.0, change as needed for 5.6
-#--------------------------------------------------------------------------
-COPY ../xdebug.ini /etc/php/7.0/cli/conf.d/docker-xdebug.ini
+cd laravel-laradock-phpstorm/llp/php-fpm
 
+docker build --no-cache \
+    -t larryeitel/llp-php-fpm-70-ssh-supervisor:latest \
+    -t larryeitel/llp-php-fpm-70-ssh-supervisor:$LARADOCK_VERSION \
+    -f Dockerfile-70-ssh-supervisor .
 
-#--------------------------------------------------------------------------
-# ADDED for PHPStorm debugging
-# phusion/baseimage:latest
-# See: https://github.com/phusion/baseimage-docker#enabling_ssh
-#--------------------------------------------------------------------------
-RUN rm -f /etc/service/sshd/down
+# Run:
+docker images | awk '{print $1,$2,$3}' | grep llp-php-fpm-70-ssh-supervisor
 
-
-#--------------------------------------------------------------------------
-# ADDED for PHPStorm debugging
-#--------------------------------------------------------------------------
-ADD id_rsa_vm /tmp/id_rsa
-ADD id_rsa_vm.pub /tmp/id_rsa.pub
-RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys \
-    && cat /tmp/id_rsa.pub >> /root/.ssh/id_rsa.pub \
-    && cat /tmp/id_rsa >> /root/.ssh/id_rsa \
-    && rm -f /tmp/id_rsa* \
-    && chmod 644 /root/.ssh/authorized_keys /root/.ssh/id_rsa.pub \
-    && chmod 400 /root/.ssh/id_rsa
-
+# you should see:
+larryeitel/llp-php-fpm-70-ssh-supervisor latest             <hash>
+larryeitel/llp-php-fpm-70-ssh-supervisor <LARADOCK_VERSION> <hash>
 ```
 
 
-### Edited laradock/docker-compose.yml
 
-**TODO**: Need to set your docker host IP for php-fpm container.
+##### php-fpm/Dockerfile-70-llp
+This is where important configurations are made to accommodate PHPStorm. 
 
-#### Workspace Utilities Container
-- Set: INSTALL_XDEBUG=true
-- Added
+- If you rebuild the above images as in the case of a version bump for LaraDock, you probably want to refresh the php-fpm container too.
 ```
-extra_hosts:
-    # insert your docker host IP
-    # this will be appended to php-fpm container /etc/hosts
-    # TODO: Replace with your Docker Host IP
-    - "dockerhost:10.0.75.1"
-ports:
-   - "22:22"
-```   
+cd laravel-laradock-phpstorm/llp
 
-#### PHP-FPM Container
-- Set: INSTALL_XDEBUG=true
-- Added
+docker-compose build --no-cache php-fpm
 ```
-extra_hosts:
-    # insert your docker host IP
-    # this will be appended to php-fpm container /etc/hosts
-    # TODO: Replace with your Docker Host IP
-    - "dockerhost:10.0.75.1"
-environment:
-    # IMPORTANT: You must have a Remote Interpreter entry matching this name
-    - PHP_IDE_CONFIG="serverName=llpLaravel"
-```   
-
 
 - If your containers are currently running, let's give it a restart.
 `docker-compose up -d mysql nginx`
+
+
+##### llp/docker-compose.yml
+- Need to set your docker host IP for php-fpm container.
+```
+php-fpm:
+    build:
+        context: ./php-fpm
+        args:
+            - INSTALL_MONGO=false
+            - INSTALL_XDEBUG=true
+
+        # Changed to point to refactored Dockerfile
+        dockerfile: Dockerfile-70-llp
+    volumes_from:
+        - volumes_source
+    expose:
+        - "9000"
+    links:
+        - workspace
+
+    # added to expose ssh port
+    ports:
+        - "22:22"
+
+    extra_hosts:
+        # insert your docker host IP
+        # this will be appended to php-fpm container /etc/hosts
+        - "dockerhost:10.0.75.1"
+
+    # PHPStorm needs this
+    environment:
+        - PHP_IDE_CONFIG="serverName=llpLaravel"
+```
+
+<a name="InstallDockerImagesToTheHub"></a>
+#### Push Images to Docker Hub
+Steps I take to push these images to the hub:
+- docker login -u larryeitel -p
+- docker push larryeitel/laradock-php-fpm-70:$LARADOCK_VERSION
+- docker push larryeitel/laradock-php-fpm-70:latest
+- docker push larryeitel/llp-php-fpm-70-ssh-supervisor:$LARADOCK_VERSION
+- docker push larryeitel/llp-php-fpm-70-ssh-supervisor:latest
 
 
 <a name="InstallCleanHouse"></a>
@@ -224,12 +262,12 @@ docker-compose up -d nginx mysql
 docker-compose ps
 
 # Should see:
-laradock_mysql_1            docker-entrypoint.sh mysqld   Up       0.0.0.0:3306->3306/tcp
-laradock_nginx_1            nginx                         Up       0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
-laradock_php-fpm_1          php-fpm                       Up       9000/tcp
-laradock_volumes_data_1     true                          Exit 0
-laradock_volumes_source_1   true                          Exit 0
-laradock_workspace_1        /sbin/my_init                 Up       0.0.0.0:22->22/tcp
+llp_mysql_1            docker-entrypoint.sh mysqld      Up       0.0.0.0:3306->3306/tcp
+llp_nginx_1            nginx                            Up       0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+llp_php-fpm_1          /usr/bin/supervisord -c /e ...   Up       0.0.0.0:22->22/tcp, 9000/tcp
+llp_volumes_data_1     true                             Exit 0
+llp_volumes_source_1   true                             Exit 0
+llp_workspace_1        /sbin/my_init                    Up
 
 
 ```
@@ -238,8 +276,7 @@ laradock_workspace_1        /sbin/my_init                 Up       0.0.0.0:22->2
 
 <a name="InstallLaraDockSSH"></a>
 #### Let's shell into php-fpm
-Assuming that you are in laradock folder.
-`ssh -i  workspace/id_rsa_vm root@docker`
+`ssh -i  php-fpm/id_rsa_vm root@docker`
 
 <a name="InstallKiTTY"></a>
 **Cha Ching!!!!**

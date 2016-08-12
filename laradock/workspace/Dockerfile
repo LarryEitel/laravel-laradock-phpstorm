@@ -133,17 +133,33 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-COPY xdebug.ini /etc/php/7.0/cli/conf.d/docker-xdebug.ini
+#--------------------------------------------------------------------------
+# ADDED for PHPStorm debugging
+# NOTE: The following assumes PHP 7.0, change as needed for 5.6
+#--------------------------------------------------------------------------
+COPY ../xdebug.ini /etc/php/7.0/cli/conf.d/docker-xdebug.ini
 
+
+#--------------------------------------------------------------------------
+# ADDED for PHPStorm debugging
+# phusion/baseimage:latest
+# See: https://github.com/phusion/baseimage-docker#enabling_ssh
+#--------------------------------------------------------------------------
 RUN rm -f /etc/service/sshd/down
 
 
+#--------------------------------------------------------------------------
+# ADDED for PHPStorm debugging
+#--------------------------------------------------------------------------
 ADD id_rsa_vm /tmp/id_rsa
 ADD id_rsa_vm.pub /tmp/id_rsa.pub
 RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys \
     && cat /tmp/id_rsa.pub >> /root/.ssh/id_rsa.pub \
     && cat /tmp/id_rsa >> /root/.ssh/id_rsa \
-    && rm -f /tmp/id_rsa*
+    && rm -f /tmp/id_rsa* \
+    && chmod 644 /root/.ssh/authorized_keys /root/.ssh/id_rsa.pub \
+    && chmod 400 /root/.ssh/id_rsa
+
 
 # Set default work directory
 WORKDIR /var/www/laravel
