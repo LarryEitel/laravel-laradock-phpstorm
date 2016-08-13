@@ -8,7 +8,6 @@ Wiring up [Laravel](https://laravel.com/), [LaraDock](https://github.com/LaraDoc
     - [Docker](#InstallDocker) 
     - [Laravel](#InstallLaravel) 
     - [LaraDock](#InstallLaraDock) 
-        - [Customized php-fpm](#CustomizePHP-FPM) 
         - [Customized workspace](#CustomizeWorkspace) 
         - [Customized laradock/docker-compose.yml](#CustomizeDockerCompose) 
         - [Clean House](#InstallCleanHouse) 
@@ -76,31 +75,6 @@ Since we will be hacking a bit on this, need to preserve refactoring with parent
 rm -rf .git*
 
 ```
-
-
-<a name="CustomizePHP-FPM"></a>
-#### Customize php-fpm
-- Create new file
-    ```
-    php-fpm/xdebug.ini
-    ```
-    Insert:
-    ```
-    zend_extension=xdebug.so
-    xdebug.remote_autostart=1
-    xdebug.remote_enable=1
-    xdebug.remote_handler=dbgp
-    xdebug.remote_mode=req
-    xdebug.remote_port=9000
-    xdebug.remote_host=dockerhost // will be set in docker-compose
-    xdebug.idekey=PHPSTORM
-    ```
-    
-- Edited Dockerfile-56 and Dockerfile-70
-    Added:
-    ```
-    COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-    ```
 
 <a name="CustomizeWorkspace"></a>
 #### Customize workspace
@@ -171,6 +145,7 @@ ports:
 
 #### PHP-FPM Container
 - Set: INSTALL_XDEBUG=true
+    - Note: xdebug is installed but disabled until switched on. See: [Debug Web Site](#UsagePHPStormDebugSite)
 - Added
 ```
 extra_hosts:
@@ -319,6 +294,11 @@ Yes
 
 <a name="UsagePHPStormDebugSite"></a>
 ### Debug WebSite
+- xdebug is disabled by default for SPEED. To start debugging, run from tThank You `laradock` folder: 
+`bash xdebugOn.bash`.
+    - To switch xdebug off, run: 
+`bash xdebugOff.bash`
+    
 - Start Remote Debugging
     - ![DebugRemoteOn](screenshots/PHPStorm/DebugRemoteOn.png) 
 - Open to edit: `bootstrap/app.php`
