@@ -98,7 +98,7 @@ Added the following:
 # ADDED for PHPStorm debugging
 # NOTE: The following assumes PHP 7.0, change as needed for 5.6
 #--------------------------------------------------------------------------
-COPY xdebug.ini /etc/php/7.0/cli/conf.d/docker-xdebug.ini
+COPY xdebug_settings_only.ini /etc/php/7.0/cli/conf.d/xdebug_settings_only.ini
 
 
 #--------------------------------------------------------------------------
@@ -122,7 +122,9 @@ RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys \
     && chmod 400 /root/.ssh/id_rsa
 
 ```
-
+#### Note regarding xdebug
+Although xdebug is installed, it is not switched on by default. This is so that tools like `composer` will not be slowed down.
+PHPStorm is configured to enable `xdebug` on-demand when running unit tests. See [PHPStorm Intepreters](https://github.com/LarryEitel/laravel-laradock-phpstorm/blob/master/screenshots/PHPStorm/Settings/LangsPHPInterpreters.png) example.
 
 ### Edited laradock/docker-compose.yml
 
@@ -157,6 +159,7 @@ environment:
     # IMPORTANT: You must have a Remote Interpreter entry matching this name
     - PHP_IDE_CONFIG="serverName=llpLaravel"
 ```   
+NOTE: PHP_IDE_CONFIG="serverName=[llpLaravel](https://github.com/LarryEitel/laravel-laradock-phpstorm/blob/master/screenshots/PHPStorm/Settings/DeploymentConnection.png)" must point to a valid `Build, Execution, Deployment > Deployment > Name`.
 
 
 - If your containers are currently running, let's give it a restart.
