@@ -294,7 +294,7 @@ Yes
 
 <a name="UsagePHPStormDebugSite"></a>
 ### Debug WebSite
-- xdebug is disabled by default for SPEED. To start debugging, run from tThank You `laradock` folder: 
+- xdebug is disabled by default for SPEED. To start debugging, run from the `laradock` folder: 
 `bash xdebugOn.bash`.
     - To switch xdebug off, run: 
 `bash xdebugOff.bash`
