@@ -45,8 +45,16 @@ ARG INSTALL_XDEBUG=true
 ENV INSTALL_XDEBUG ${INSTALL_XDEBUG}
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     # Install the xdebug extention
-    pecl install xdebug && \
-    docker-php-ext-enable xdebug \
+    pecl install xdebug \
+
+    # need to disable by default
+    # By default it writes: zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so
+    # Into: /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    # pecl install xdebug && \
+    # docker-php-ext-enable xdebug
+
+    # To enable installed xdebug, run ./xdebugOn.bash, after run ./xdebugOff.bash
+
 ;fi
 
 #####################################
