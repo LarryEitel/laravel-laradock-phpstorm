@@ -150,6 +150,8 @@ RUN rm -f /etc/service/sshd/down
 
 #--------------------------------------------------------------------------
 # ADDED for PHPStorm debugging
+# You need to create id_rsa_vm and id_rsa_vm.pub and save them in the
+# workspace directory
 #--------------------------------------------------------------------------
 ADD id_rsa_vm /tmp/id_rsa
 ADD id_rsa_vm.pub /tmp/id_rsa.pub
