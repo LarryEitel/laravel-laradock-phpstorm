@@ -36,9 +36,9 @@ The purpose of this project is to focus on how to get these three projects to wo
 
 <a name="InstallWindows"></a>
 ### Windows
-#### [Hosts File Editor](http://hostsfileeditor.codeplex.com/)
+#### [Hosts File Editor](https://github.com/scottlerch/HostsFileEditor)
 - Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval.
-    - Set `llpLaravel` to your docker host IP.
+    - Set `laravel` to your docker host IP. See [Example].(screenshots/SimpleHostsEditor/AddHost_dockerhost.png) example.
 
 <a name="InstallDocker"></a>
 ### Docker
@@ -157,9 +157,9 @@ extra_hosts:
     - "dockerhost:10.0.75.1"
 environment:
     # IMPORTANT: You must have a Remote Interpreter entry matching this name
-    - PHP_IDE_CONFIG="serverName=llpLaravel"
+    - PHP_IDE_CONFIG="serverName=laravel"
 ```   
-NOTE: PHP_IDE_CONFIG="serverName=[llpLaravel](https://github.com/LarryEitel/laravel-laradock-phpstorm/blob/master/screenshots/PHPStorm/Settings/DeploymentConnection.png)" must point to a valid `Build, Execution, Deployment > Deployment > Name`.
+NOTE: PHP_IDE_CONFIG="serverName=[laravel](https://github.com/LarryEitel/laravel-laradock-phpstorm/blob/master/screenshots/PHPStorm/Settings/DeploymentConnection.png)" must point to a valid `Build, Execution, Deployment > Deployment > Name`.
 
 
 - If your containers are currently running, let's give it a restart.
@@ -306,6 +306,6 @@ Yes
     - ![DebugRemoteOn](screenshots/PHPStorm/DebugRemoteOn.png) 
 - Open to edit: `bootstrap/app.php`
 - Add a BreakPoint on line 14: `$app = new Illuminate\Foundation\Application(`
-- Reload [Laravel Site](http://llplaravel/)
+- Reload [Laravel Site](http://laravel/)
     - Should have stopped at the BreakPoint!! You are now debugging locally against a remote Laravel project via SSH!
     - ![Remote Debugging Success](screenshots/PHPStorm/RemoteDebuggingSuccess.png)
