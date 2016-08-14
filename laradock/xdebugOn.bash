@@ -1,12 +1,22 @@
 #! /bin/bash
 
 echo "Start xdebug"
-winpty docker exec -it laradock_php-fpm_1 \
-    bash -c 'ls /usr/local/etc/php/conf.d'
 
-winpty docker exec -it laradock_php-fpm_1 \
-    bash -c 'cp /var/www/laravel/laradock/workspace/xdebug_*.ini /usr/local/etc/php/conf.d'
 
-docker stop laradock_php-fpm_1
-docker start laradock_php-fpm_1
-winpty docker exec -it laradock_php-fpm_1 bash -c 'php -v'
+COPY_INI_FILE_CMD='cp /var/www/laravel/laradock/workspace/xdebug_*.ini /usr/local/etc/php/conf.d'
+
+
+# If running on Windows, need to prepend with winpty :(
+if [[ "$(expr substr $(uname -s) 1 5)" == "MINGW" ]]; then
+    winpty docker exec -it $(docker-compose ps | grep php-fpm | cut -d" " -f 1) \
+        bash -c "${COPY_INI_FILE_CMD}"
+    docker-compose restart php-fpm
+    winpty docker exec -it $(docker-compose ps | grep php-fpm | cut -d" " -f 1) \
+        bash -c 'php -v'
+else
+    docker exec -it $(docker-compose ps | grep php-fpm | cut -d" " -f 1) \
+        bash -c "${COPY_INI_FILE_CMD}"
+    docker-compose restart php-fpm
+    docker exec -it $(docker-compose ps | grep php-fpm | cut -d" " -f 1) \
+        bash -c 'php -v'
+fi
