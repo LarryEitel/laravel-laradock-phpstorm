@@ -8,7 +8,7 @@ PHP_FPM_CONTAINER=$(docker-compose ps | grep php-fpm | cut -d" " -f 1)
 
 xdebug_status ()
 {
-    echo 'xdebug status'
+    echo 'xDebug status'
 
     # If running on Windows, need to prepend with winpty :(
     if [[ "$(expr substr $(uname -s) 1 5)" == "MINGW" ]]; then
@@ -22,7 +22,7 @@ xdebug_status ()
 
 xdebug_start ()
 {
-    echo 'Start xdebug'
+    echo 'Start xDebug'
     # Copy important xdebug remote settings from workspace container to php-fpm
     # And uncomment line with xdebug extension, thus enabling it
     ON_CMD="cp \
@@ -49,7 +49,7 @@ xdebug_start ()
 
 xdebug_stop ()
 {
-    echo 'Stop xdebug'
+    echo 'Stop xDebug'
     # Comment out xdebug extension line
     OFF_CMD="sed -i 's/^zend_extension=/;zend_extension=/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 

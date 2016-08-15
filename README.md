@@ -297,10 +297,10 @@ Yes
 
 <a name="UsagePHPStormDebugSite"></a>
 ### Debug WebSite
-- xdebug is disabled by default for SPEED. To start debugging, run from the `laradock` folder: 
-`./xdebugOn.bash`.
+- In case xDebug is disabled, from the `laradock` folder run: 
+`./xdebugPhpFpm start`.
     - To switch xdebug off, run: 
-`./xdebugOff.bash`
+`./xdebugPhpFpm stop`
     
 - Start Remote Debugging
     - ![DebugRemoteOn](screenshots/PHPStorm/DebugRemoteOn.png) 
