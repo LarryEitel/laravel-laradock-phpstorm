@@ -10,7 +10,7 @@
 #    https://hub.docker.com/r/laradock/php-fpm/tags/
 #
 
-FROM laradock/php-fpm:7.0--1.1
+FROM laradock/php-fpm:7.0--1.2
 
 MAINTAINER Mahmoud Zalt <mahmoud@zalt.me>
 
@@ -35,26 +35,23 @@ MAINTAINER Mahmoud Zalt <mahmoud@zalt.me>
 #
 #   - INSTALL_XDEBUG=           false
 #   - INSTALL_MONGO=            false
+#   - INSTALL_ZIP_ARCHIVE=      false
+#   - INSTALL_MEMCACHED=        false
 #
 
 #####################################
 # xDebug:
 #####################################
-# NOTE:
-# xdebug is enabled by default if installed
-# /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-# Contains
-# zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so
-#####################################
-
 
 ARG INSTALL_XDEBUG=true
 ENV INSTALL_XDEBUG ${INSTALL_XDEBUG}
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
-    # Install the xdebug extention
+    # Install the xdebug extension
     pecl install xdebug && \
     docker-php-ext-enable xdebug \
 ;fi
+# ADD for REMOTE debugging
+COPY ./xdebug_settings_only.ini /usr/local/etc/php/conf.d/xdebug_settings_only.ini
 
 #####################################
 # MongoDB:
@@ -63,9 +60,46 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
 ARG INSTALL_MONGO=true
 ENV INSTALL_MONGO ${INSTALL_MONGO}
 RUN if [ ${INSTALL_MONGO} = true ]; then \
-    # Install the mongodb extention
-    pecl install mongodb \
+    # Install the mongodb extension
+    pecl install mongodb && \
+    docker-php-ext-enable mongodb \
 ;fi
+
+#####################################
+# ZipArchive:
+#####################################
+
+ARG INSTALL_ZIP_ARCHIVE=true
+ENV INSTALL_ZIP_ARCHIVE ${INSTALL_ZIP_ARCHIVE}
+RUN if [ ${INSTALL_ZIP_ARCHIVE} = true ]; then \
+    # Install the zip extension
+    pecl install zip && \
+    docker-php-ext-enable zip \
+;fi
+
+#####################################
+# PHP Memcached:
+#####################################
+
+ARG INSTALL_MEMCACHED=true
+ENV INSTALL_MEMCACHED ${INSTALL_MEMCACHED}
+RUN if [ ${INSTALL_MEMCACHED} = true ]; then \
+    # Install the php memcached extension
+    curl -L -o /tmp/memcached.tar.gz "https://github.com/php-memcached-dev/php-memcached/archive/php7.tar.gz" \
+    && mkdir -p memcached \
+    && tar -C memcached -zxvf /tmp/memcached.tar.gz --strip 1 \
+    && ( \
+        cd memcached \
+        && phpize \
+        && ./configure \
+        && make -j$(nproc) \
+        && make install \
+    ) \
+    && rm -r memcached \
+    && rm /tmp/memcached.tar.gz \
+    && docker-php-ext-enable memcached \
+;fi
+
 
 #
 #--------------------------------------------------------------------------

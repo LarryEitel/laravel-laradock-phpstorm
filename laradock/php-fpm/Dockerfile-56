@@ -10,7 +10,7 @@
 #    https://hub.docker.com/r/laradock/php-fpm/tags/
 #
 
-FROM laradock/php-fpm:5.6--1.1
+FROM laradock/php-fpm:5.6--1.2
 
 MAINTAINER Mahmoud Zalt <mahmoud@zalt.me>
 
@@ -35,6 +35,8 @@ MAINTAINER Mahmoud Zalt <mahmoud@zalt.me>
 #
 #   - INSTALL_XDEBUG=           false
 #   - INSTALL_MONGO=            false
+#   - INSTALL_ZIP_ARCHIVE=      false
+#   - INSTALL_MEMCACHED=        false
 #
 
 #####################################
@@ -44,10 +46,12 @@ MAINTAINER Mahmoud Zalt <mahmoud@zalt.me>
 ARG INSTALL_XDEBUG=true
 ENV INSTALL_XDEBUG ${INSTALL_XDEBUG}
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
-    # Install the xdebug extention
+    # Install the xdebug extension
     pecl install xdebug && \
     docker-php-ext-enable xdebug \
 ;fi
+# ADD for REMOTE debugging
+COPY ./xdebug_settings_only.ini /usr/local/etc/php/conf.d/xdebug_settings_only.ini
 
 #####################################
 # MongoDB:
@@ -56,9 +60,35 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
 ARG INSTALL_MONGO=true
 ENV INSTALL_MONGO ${INSTALL_MONGO}
 RUN if [ ${INSTALL_MONGO} = true ]; then \
-    # Install the mongodb extention
-    pecl install mongodb \
+    # Install the mongodb extension
+    pecl install mongodb && \
+    docker-php-ext-enable mongodb \
 ;fi
+
+#####################################
+# ZipArchive:
+#####################################
+
+ARG INSTALL_ZIP_ARCHIVE=true
+ENV INSTALL_ZIP_ARCHIVE ${INSTALL_ZIP_ARCHIVE}
+RUN if [ ${INSTALL_ZIP_ARCHIVE} = true ]; then \
+    # Install the zip extension
+    pecl install zip && \
+    docker-php-ext-enable zip \
+;fi
+
+#####################################
+# PHP Memcached:
+#####################################
+
+ARG INSTALL_MEMCACHED=true
+ENV INSTALL_MEMCACHED ${INSTALL_MEMCACHED}
+RUN if [ ${INSTALL_MEMCACHED} = true ]; then \
+    # Install the php memcached extension
+    pecl install memcached && \
+    docker-php-ext-enable memcached \
+;fi
+
 
 #
 #--------------------------------------------------------------------------
@@ -72,14 +102,6 @@ ADD ./laravel.pool.conf /usr/local/etc/php-fpm.d/
 RUN rm -r /var/lib/apt/lists/*
 
 RUN usermod -u 1000 www-data
-
-
-#--------------------------------------------------------------------------
-# ADDED for PHPStorm debugging
-#--------------------------------------------------------------------------
-COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-
-
 
 WORKDIR /var/www/laravel
 

@@ -23,14 +23,10 @@ xdebug_status ()
 xdebug_start ()
 {
     echo 'Start xDebug'
-    # Copy important xdebug remote settings from workspace container to php-fpm
+
     # And uncomment line with xdebug extension, thus enabling it
-    ON_CMD="cp \
-                /var/www/laravel/laradock/workspace/xdebug_settings_only.ini \
-                /usr/local/etc/php/conf.d \
-            && sed \
-                -i 's/^;zend_extension=/zend_extension=/g' \
-                /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
+    ON_CMD="sed -i 's/^;zend_extension=/zend_extension=/g' \
+                    /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 
 
     # If running on Windows, need to prepend with winpty :(
@@ -50,6 +46,7 @@ xdebug_start ()
 xdebug_stop ()
 {
     echo 'Stop xDebug'
+
     # Comment out xdebug extension line
     OFF_CMD="sed -i 's/^zend_extension=/;zend_extension=/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 

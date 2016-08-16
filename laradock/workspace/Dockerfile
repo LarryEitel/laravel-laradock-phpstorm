@@ -52,6 +52,8 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     sed -i 's/^/;/g' /etc/php/7.0/cli/conf.d/20-xdebug.ini && \
     echo "alias phpunit='php -dzend_extension=xdebug.so /var/www/laravel/vendor/bin/phpunit'" >> ~/.bashrc \
 ;fi
+# ADD for REMOTE debugging
+COPY ./xdebug_settings_only.ini /etc/php/7.0/cli/conf.d/xdebug_settings_only.ini
 
 #####################################
 # MongoDB:
@@ -133,11 +135,6 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-#--------------------------------------------------------------------------
-# ADDED for PHPStorm debugging
-# NOTE: The following assumes PHP 7.0, change as needed for 5.6
-#--------------------------------------------------------------------------
-COPY xdebug_settings_only.ini /etc/php/7.0/cli/conf.d/xdebug_settings_only.ini
 
 
 #--------------------------------------------------------------------------
