@@ -257,6 +257,9 @@ Yes
     - `Settings/DeploymentConnection`
         - ![Settings/DeploymentConnection](screenshots/PHPStorm/Settings/DeploymentConnection.png)
     
+    - `Settings/DeploymentMappings`
+        - ![Settings/DeploymentMappings](screenshots/PHPStorm/Settings/DeploymentMappings.png)
+    
     - `Settings/LangsPHPInterpreters`
         - ![Settings/LangsPHPInterpreters](screenshots/PHPStorm/Settings/LangsPHPInterpreters.png)
     
