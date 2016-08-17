@@ -1,8 +1,8 @@
 **/.idea*
 **/vendor
 **/node_modules
-**/public/storage
-**/data
+public/storage
+laradock/data
 **/.env
 **/logs
 **/id_rsa*
