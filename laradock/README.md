@@ -13,10 +13,14 @@ It's like Laravel Homestead but for Docker instead of Vagrant.
 
 ![](https://s31.postimg.org/nbettdki3/lara_dock_poster_new.jpg)
 
+
+
 <br>
 ## Contents
 
-
+- [Readme Languages](#)
+	- [English (Default)](#)
+	- [Chinese](https://github.com/LaraDock/laradock/blob/master/README-zh.md)
 - [Intro](#Intro)
 	- [Features](#features)
 	- [Supported Software's](#Supported-Containers)
@@ -44,12 +48,13 @@ It's like Laravel Homestead but for Docker instead of Vagrant.
 		- [Run Artisan Commands](#Run-Artisan-Commands)
 		- [Use Redis](#Use-Redis)
 		- [Use Mongo](#Use-Mongo)
+		- [Use phpMyAdmin](#Use-phpMyAdmin)
 	- [PHP](#PHP)
 		- [Install PHP Extensions](#Install-PHP-Extensions)
 		- [Change the PHP-FPM Version](#Change-the-PHP-FPM-Version)
 		- [Change the PHP-CLI Version](#Change-the-PHP-CLI-Version)
 		- [Install xDebug](#Install-xDebug)
-		- [Start/Stop xDebug](#Controll-xDebug)
+		    - [Start/Stop xDebug](#Controll-xDebug)
 	- [Production](#Production)
 		- [Setup Laravel and Docker on Digital Ocean](#Digital-Ocean)
 	- [Misc](#Misc)
@@ -126,6 +131,7 @@ Let's see how easy it is to install `NGINX`, `PHP`, `Composer`, `MySQL` and `Red
 	- Beanstalkd (+ Beanstalkd Console)
 - **Tools:**
 	- Workspace (PHP7-CLI, Composer, Git, Node, Gulp, SQLite, Vim, Nano, cURL...)
+	- phpMyAdmin
 
 
 >If you can't find your Software, build it yourself and add it to this list. Contributions are welcomed :)
@@ -187,8 +193,8 @@ What's better than a **Demo Video**:
 <a name="Requirements"></a>
 ## Requirements
 
-- [Git](https://git-scm.com/downloads)                                           
-- [Docker](https://www.docker.com/products/docker/)
+- [Git](https://git-scm.com/downloads)
+- [Docker](https://www.docker.com/products/docker/) `>= 1.12`
 
 
 
@@ -243,7 +249,7 @@ docker-compose up -d  nginx mysql
 
 You can select your own combination of Containers form the list below:
 
-`nginx`, `hhvm`, `php-fpm`, `mysql`, `redis`, `postgres`, `mariadb`, `neo4j`, `mongo`, `apache2`, `caddy`, `memcached`, `beanstalkd`, `beanstalkd-console`, `workspace`.
+`nginx`, `hhvm`, `php-fpm`, `mysql`, `redis`, `postgres`, `mariadb`, `neo4j`, `mongo`, `apache2`, `caddy`, `memcached`, `beanstalkd`, `beanstalkd-console`, `workspace`, `phpmyadmin`.
 
 
 **Note**: `workspace` and `php-fpm` will run automatically in most of the cases, so no need to specify them in the `up` command.
@@ -293,7 +299,7 @@ If you need a special support. Contact me, more details in the [Help & Questions
 
 
 <a name="Docker"></a>
-### [Docker]
+
 
 
 
@@ -475,7 +481,6 @@ docker logs {container-name}
 
 <br>
 <a name="Laravel"></a>
-### [Laravel]
 
 
 
@@ -493,7 +498,7 @@ Example using Composer
 composer create-project laravel/laravel my-cool-app "5.2.*"
 ```
 
-> We recommand using `composer create-project` instead of the Laravel installer, to install Laravel.
+> We recommend using `composer create-project` instead of the Laravel installer, to install Laravel.
 
 For more about the Laravel installation click [here](https://laravel.com/docs/master#installing-laravel).
 
@@ -703,8 +708,27 @@ More details about this [here](https://github.com/jenssegers/laravel-mongodb#ins
 
 
 <br>
+<a name="Use-phpMyAdmin"></a>
+### Use phpMyAdmin
+
+1 - Run the phpMyAdmin Container (`phpmyadmin`) with the `docker-compose up` command. Example:
+
+```bash
+# use with mysql
+docker-compose up -d mysql phpmyadmin
+
+# use with mariadb
+docker-compose up -d mariadb phpmyadmin
+```
+
+2 - Open your browser and visit the localhost on port **8080**:  `http://localhost:8080`
+
+
+
+
+
+<br>
 <a name="PHP"></a>
-### [PHP]
 
 
 
@@ -857,236 +881,23 @@ To controll the behavior of xDebug (in the `php-fpm` Container), you can run the
 
 <br>
 <a name="Production"></a>
-### [Production]
+
+
 
 
 <br>
 <a name="Digital-Ocean"></a>
 ### Setup Laravel and Docker on Digital Ocean
 
-
-#### Install Docker
-```
-Login Digital Ocean
-Add Droplet
-1 Click Install docker
-Choose Droplet
-reset ROOT password
-check email
-```
-
-#### SSH to your Server
-
-```
-ssh root@ipaddress
-```
-you will be prompt of that password.
-type the password you receive in your email
-
-then it will ask to you to change a new password
-just change it to the custom root password you want
-
-After SSH
-you can check that docker command is working by typing 
-
-```
-$root@midascode:~# docker
-```
-
-#### Set Up Your Laravel Project
-
-```
-$root@midascode:~# apt-get install git
-$root@midascode:~# git clone https://github.com/laravel/laravel
-$root@midascode:~# cd laravel
-$root@midascode:~/laravel# git checkout develop
-$root@midascode:~/laravel/ git submodule add https://github.com/LaraDock/laradock.git
-$root@midascode:~/laravel/ cd laradock
-```
-
-#### Install docker-compose command
-
-```
-$root@midascode:~/laravel/laradock# curl -L https://github.com/docker/compose/releases/download/1.8.0/run.sh > /usr/local/bin/docker-compose
-$root@midascode:~/chmod +x /usr/local/bin/docker-compose
-```
-
-#### Create Your LaraDock Containers
-
-```
-$root@midascode:~/laravel/laradock# docker-compose up -d nginx mysql
-```
-
-#### Go to Your Workspace
-
-```
-docker-compose exec workspace bash
-```
-
-#### Install laravel Dependencies, Add .env , generate Key and give proper permission certain folder
-
-```
-$ root@0e77851d27d3:/var/www/laravel# composer install
-$ root@0e77851d27d3:/var/www/laravel# cp .env.example .env
-$ root@0e77851d27d3:/var/www/laravel# php artisan key:generate
-$ root@0e77851d27d3:/var/www/laravel# exit
-$root@midascode:~/laravel/laradock# cd ..
-$root@midascode:~/laravel# sudo chmod -R 777 storage bootstrap/cache
-```
-
-you can then view your laravel site at your ipaddress
-for example
-```
-192.168.1.1 
-```
-
-You will see there Laravel Default Welcome Page
-
-but if you need to view on your custom domain name
-which you would.
-
-#### Using Your Own Domain Name
-login to your DNS provider
-Godaddy, Namecheap what ever...
-And Point the Custom Domain Name Server to
-
-```
-ns1.digitalocean.com
-ns2.digitalocean.com
-ns3.digitalocean.com
-```
-In Your Digital Ocean Account go to 
-```
-https://cloud.digitalocean.com/networking/domains
-```
-add your domain name and choose the server ip you provision earlier
-
-#### Serve Site With NGINX (HTTP ONLY)
-Go back to command line
-```
-$root@midascode:~/laravel/laradock# cd nginx
-$root@midascode:~/laravel/laradock/nginx# vim laravel.conf
-```
-remove default_server
-```
-
-    listen 80 default_server;
-    listen [::]:80 default_server ipv6only=on;
-
-```
- and add server_name (your custom domain)
-```
-    listen 80;
-    listen [::]:80 ipv6only=on;
-    server_name yourdomain.com;
-```
-
-#### Rebuild Your Nginx
-```
-$root@midascode:~/laravel/laradock/nginx# docker-compose down
-$root@midascode:~/laravel/laradock/nginx# docker-compose build nginx
-```
-
-#### Re Run Your Containers MYSQL and NGINX
-```
-$root@midascode:~/laravel/laradock/nginx# docker-compose up -d nginx mysql
-```
-
-###### View Your Site with HTTP ONLY (http://yourdomain.com)
-
-#### Run Site on SSL with Let's Encrypt Certificate
-
-###### Note: You need to Use Caddy here Instead of Nginx
-
-###### To go Caddy Folders and Edit CaddyFile
-
-```
-$root@midascode:~/laravel/laradock# cd caddy
-$root@midascode:~/laravel/laradock/caddy# vim Caddyfile
-```
-
-Remove 0.0.0.0:80 
-
-```
-0.0.0.0:80
-root /var/www/laravel/public
-``` 
-and replace with your https://yourdomain.com
-
-```
-https://yourdomain.com
-root /var/www/laravel/public
-```
-uncomment tls 
-
-```
-#tls self-signed
-```
-and replace self-signed with your email address
-
-```
-tls midascodebreaker@gmai.com
-```
-This is needed Prior to Creating Let's Encypt 
-
-####  Run Your  Caddy Container without the -d flag and Generate SSL with Let's Encrypt
-
-```
-$root@midascode:~/laravel/laradock/caddy# docker-compose up  caddy
-```
-
-you will be prompt here to enter your email... you may enter it or not
-```
-Attaching to laradock_mysql_1, laradock_caddy_1
-caddy_1               | Activating privacy features...
-caddy_1               | Your sites will be served over HTTPS automatically using Let's Encrypt.
-caddy_1               | By continuing, you agree to the Let's Encrypt Subscriber Agreement at:
-caddy_1               |   https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf
-caddy_1               | Activating privacy features... done.
-caddy_1               | https://yourdomain.com
-caddy_1               | http://yourdomain.com
-```
-
-After it finish Press Ctrl + C to exit ...
-
-#### Stop All Containers and ReRun Caddy and Other Containers on Background
-
-```
-$root@midascode:~/laravel/laradock/caddy# docker-compose down
-$root@midascode:~/laravel/laradock/caddy# docker-compose up -d mysql caddy
-```
-View your Site in the Browser Securely Using HTTPS (https://yourdomain.com)
-
-##### Note that Certificate will be Automatically Renew By Caddy
-
->References: 
->
-- [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04)
-- [https://www.digitalocean.com/products/one-click-apps/docker/](https://www.digitalocean.com/products/one-click-apps/docker/)
-- [https://docs.docker.com/engine/installation/linux/ubuntulinux/](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
-- [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
-- [https://caddyserver.com/docs/automatic-https](https://caddyserver.com/docs/automatic-https)
-- [https://caddyserver.com/docs/tls](https://caddyserver.com/docs/tls)
-- [https://caddyserver.com/docs/caddyfile](https://caddyserver.com/docs/caddyfile)
-
-
-
-
-
-
-
-
-
-
-
-
-
+####[Full Giude Here](https://github.com/LaraDock/laradock/blob/master/_guides/digital_ocean.md)
 
 
 
 <br>
 <a name="Misc"></a>
-### [Misc]
+
+
+
 
 
 <br>
@@ -1191,6 +1002,8 @@ It should be like this:
 
 *Here's a list of the common problems you might face, and the possible solutions.*
 
+
+
 #### I see a blank (white) page instead of the Laravel 'Welcome' page!
 
 Run the following command from the Laravel root directory:
@@ -1199,14 +1012,25 @@ Run the following command from the Laravel root directory:
 sudo chmod -R 777 storage bootstrap/cache
 ```
 
+
 #### I see "Welcome to nginx" instead of the Laravel App!
 
 Use `http://127.0.0.1` instead of `http://localhost` in your browser.
+
+
 
 #### I see an error message containing `address already in use`
 
 Make sure the ports for the services that you are trying to run (80, 3306, etc.) are not being used already by other programs, such as a built in `apache`/`httpd` service or other development tools you have installed.
 
+
+
+#### I get Nginx error 404 Not Found on Windows.
+
+1. Go to docker Settings on your Windows machine. 
+2. Click on the `Shared Drives` tab and check the drive that contains your project files.
+3. Enter your windows username and password.
+4. Go to the `reset` tab and click restart docker.
 
 
 
@@ -1239,7 +1063,7 @@ Moving from Docker Toolbox (VirtualBox) to Docker Native (for Mac/Windows). Requ
 
 This little project was built by one man who has a full time job and many responsibilities, so if you like this project and you find that it needs a bug fix or support for new software or upgrade any container, or anything else.. Do not hesitate to contribute, you are more than welcome :)
 
-#### Read our [Contribution Guidelines](https://github.com/LaraDock/laradock/blob/master/CONTRIBUTING.md)
+#### Read the [Contribution Guidelines](https://github.com/LaraDock/laradock/blob/master/CONTRIBUTING.md).
 
 <a name="Help"></a>
 ## Help & Questions
@@ -1258,6 +1082,9 @@ For special help with Docker and/or Laravel, you can schedule a live call with t
 
 **Main Contributors:**
 
+- [Zhqagp](https://github.com/zhqagp)
+- [Tim B (tjb328)](https://github.com/tjb328)
+- [MidasCodeBreaker](https://github.com/midascodebreaker)
 - [Larry Eitel (LarryEitel)](https://github.com/LarryEitel)
 - [Suteepat (tianissimo)](https://github.com/tianissimo)
 - [David (davidavz)](https://github.com/davidavz)

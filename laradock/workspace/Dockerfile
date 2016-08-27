@@ -33,10 +33,11 @@ MAINTAINER Mahmoud Zalt <mahmoud@zalt.me>
 # Optional Software's will only be installed if you set them to `true`
 # in the `docker-compose.yml` before the build.
 #
-#   - INSTALL_XDEBUG=           false
+#   - INSTALL_XDEBUG=           true
 #   - INSTALL_MONGO=            false
 #   - COMPOSER_GLOBAL_INSTALL=  false
 #   - INSTALL_NODE=             false
+#   - INSTALL_DRUSH=            false
 #
 
 #####################################
@@ -53,7 +54,36 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     echo "alias phpunit='php -dzend_extension=xdebug.so /var/www/laravel/vendor/bin/phpunit'" >> ~/.bashrc \
 ;fi
 # ADD for REMOTE debugging
-COPY ./xdebug_settings_only.ini /etc/php/7.0/cli/conf.d/xdebug_settings_only.ini
+COPY ./xdebug.ini /etc/php/7.0/cli/conf.d/xdebug.ini
+
+
+#####################################
+# ssh:
+#####################################
+
+# Check if ssh needs to be installed
+# See: https://github.com/phusion/baseimage-docker#enabling_ssh
+ADD insecure_id_rsa /tmp/id_rsa
+ADD insecure_id_rsa.pub /tmp/id_rsa.pub
+ARG INSTALL_WORKSPACE_SSH=true
+ENV INSTALL_WORKSPACE_SSH ${INSTALL_WORKSPACE_SSH}
+RUN if [ ${INSTALL_WORKSPACE_SSH} = true ]; then \
+    rm -f /etc/service/sshd/down && \
+    cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys \
+        && cat /tmp/id_rsa.pub >> /root/.ssh/id_rsa.pub \
+        && cat /tmp/id_rsa >> /root/.ssh/id_rsa \
+        && rm -f /tmp/id_rsa* \
+        && chmod 644 /root/.ssh/authorized_keys /root/.ssh/id_rsa.pub \
+    && chmod 400 /root/.ssh/id_rsa \
+;fi
+
+#--------------------------------------------------------------------------
+# ADDED for PHPStorm debugging
+# phusion/baseimage:latest
+# See: https://github.com/phusion/baseimage-docker#enabling_ssh
+#--------------------------------------------------------------------------
+RUN rm -f /etc/service/sshd/down
+
 
 #####################################
 # MongoDB:
@@ -98,6 +128,22 @@ RUN if [ ${COMPOSER_GLOBAL_INSTALL} = true ]; then \
 ;fi
 
 #####################################
+# Drush:
+#####################################
+USER root
+ENV DRUSH_VERSION 8.1.2
+ARG INSTALL_DRUSH=true
+ENV INSTALL_DRUSH ${INSTALL_DRUSH}
+RUN if [ ${INSTALL_DRUSH} = true ]; then \
+    # Install Drush 8 with the phar file.
+    curl -fsSL -o /usr/local/bin/drush https://github.com/drush-ops/drush/releases/download/$DRUSH_VERSION/drush.phar | bash && \
+    chmod +x /usr/local/bin/drush && \
+    drush core-status \
+;fi
+
+USER laradock
+
+#####################################
 # Node / NVM:
 #####################################
 
@@ -133,32 +179,6 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
 USER root
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-
-
-
-#--------------------------------------------------------------------------
-# ADDED for PHPStorm debugging
-# phusion/baseimage:latest
-# See: https://github.com/phusion/baseimage-docker#enabling_ssh
-#--------------------------------------------------------------------------
-RUN rm -f /etc/service/sshd/down
-
-
-#--------------------------------------------------------------------------
-# ADDED for PHPStorm debugging
-# You need to create id_rsa_vm and id_rsa_vm.pub and save them in the
-# workspace directory
-#--------------------------------------------------------------------------
-ADD id_rsa_vm /tmp/id_rsa
-ADD id_rsa_vm.pub /tmp/id_rsa.pub
-RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys \
-    && cat /tmp/id_rsa.pub >> /root/.ssh/id_rsa.pub \
-    && cat /tmp/id_rsa >> /root/.ssh/id_rsa \
-    && rm -f /tmp/id_rsa* \
-    && chmod 644 /root/.ssh/authorized_keys /root/.ssh/id_rsa.pub \
-    && chmod 400 /root/.ssh/id_rsa
-
 
 # Set default work directory
 WORKDIR /var/www/laravel

@@ -1,5 +1,3 @@
-
-
 # Contributing to LaraDock
 
 Your contribution is more than welcome. Let's keep LaraDock amazing.
@@ -58,7 +56,7 @@ features, by not reporting duplicate issues.
 
 Always Test everything and make sure its working:
 
-- Pull the latest updates (or fork of you don’t have permission)
+- Pull the latest updates (or fork of you donâ€™t have permission)
 - Before editing anything:
     - Test building the container (docker-compose build --no-cache container-name) build with no cache first.
     - Test running the container with some other containers in real app and see of everything is working fine.
