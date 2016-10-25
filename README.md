@@ -1,5 +1,9 @@
 # laravel-laradock-phpstorm
+
+## Note: This project has been deprecated. I am refactoring these docs into a PHPStorm Debugging Guide which is currently a [Pull Request](https://github.com/LaraDock/laradock/pull/384).
+
 Wiring up [Laravel](https://laravel.com/), [LaraDock](https://github.com/LaraDock/laradock) [Laravel+Docker] and [PHPStorm](https://www.jetbrains.com/phpstorm/) to play nice together complete with remote xdebug'ing as icing on top!
+
 
 
 - [Intro](#Intro)
